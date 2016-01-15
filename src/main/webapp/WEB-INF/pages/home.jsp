@@ -1,7 +1,14 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <link href="/resources/css/main.css" rel="stylesheet"/>
+    
+    
+    <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+   
+    
+    
     <script
             id="sap-ui-bootstrap"
             src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
@@ -11,11 +18,12 @@
             data-sap-ui-compatVersion="edge"
             data-sap-ui-preload="async"
             data-sap-ui-resourceroots='{
-                "xmlViews": "resources/view/"
+                "xmlViews":  "<c:url value='/resources/view/'/>"
             }'>
     </script>
+    
+     <script src="<c:url value="/resources/js/controller.js" />"></script>
 
-    <script src="/resources/js/controller.js"></script>
 
 </head>
 <body>
