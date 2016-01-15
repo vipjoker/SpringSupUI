@@ -18,27 +18,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],
 
 sap.ui.define(["sap/ui/core/mvc/Controller",
                "sap/m/MessageToast",
-               "sap/ui/model/json/JSONModel"],
-        function(Controller,MessageToast, JSONModel){
+               "sap/ui/model/json/JSONModel",
+               "sap/ui/model/resource/ResourceModel"],
+        function(Controller,MessageToast, JSONModel,ResourceModel){
         "usr strict";
 
         return Controller.extend("new.controller", {
 
 
             onSecondButtonClick : function() {
-                alert("Second button works");
-            },
-
-            onInit : function(){
-                var someObject = {
-                    recepient : {
-                        name : "my message"
-                    }
-                };
-
-                var myModel = new JSONModel(someObject);
-                this.getView().setModel(myModel)
-
+                
+            	
+            	var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            	
+            	var sRecipient = this.getView().getModel().getProperty("/recepient/name");
+            	var sMsg = oBundle.getText("helloMsg",[sRecipient]);
+            	
+                MessageToast.show(sMsg);
             }
 
         });
@@ -58,11 +54,11 @@ sap.ui.getCore().attachInit(function () {
 function init(){
 
     new sap.ui.xmlview({
-        viewName: "xmlViews.App"
+        viewName: "sapUInamespace.view.App"
     }).placeAt("content");
 
-    new sap.ui.xmlview({
-        viewName: "xmlViews.Second"
+    new sap.ui.core.ComponentContainer({
+        name: "sapUInamespace"
     }).placeAt("edit");
 
 

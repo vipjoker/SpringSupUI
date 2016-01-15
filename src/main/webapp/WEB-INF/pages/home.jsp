@@ -18,7 +18,7 @@
             data-sap-ui-compatVersion="edge"
             data-sap-ui-preload="async"
             data-sap-ui-resourceroots='{
-                "xmlViews":  "<c:url value='/resources/view/'/>"
+                "sapUInamespace":  "<c:url value='/resources/'/>"
             }'>
     </script>
     
